@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function getNewBet() {
-        fetch('https://sir-euromilhoes-19cf.onrender.com//euro') 
+        fetch('https://sir-euromilhoes-19cf.onrender.com/euro') 
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

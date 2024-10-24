@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function getNewBet() {
-        fetch('http://localhost:3000/euro')  // Adjust URL if needed
+        fetch('https://sir-euromilhoes-19cf.onrender.com//euro') 
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(bet.numbers, bet.stars);
 
                 const theOLNumbers = document.getElementById('olMain');
-                theOLNumbers.innerHTML = "";  // Clear previous numbers
+                theOLNumbers.innerHTML = "";
 
                 bet.numbers.forEach(number => {
                     const newLi = document.createElement("li");
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 const theOLStars = document.getElementById('olStars');
-                theOLStars.innerHTML = "";  // Clear previous stars
+                theOLStars.innerHTML = "";
 
                 bet.stars.forEach(star => {
                     const newLi = document.createElement("li");

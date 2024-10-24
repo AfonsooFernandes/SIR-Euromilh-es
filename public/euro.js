@@ -6,13 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function getNewBet() {
-        fetch('http://localhost:3000/euro') 
-            .then(response => response.json()) 
+        fetch('http://localhost:3000/euro')  // Adjust URL if needed
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(bet => {
-                console.log(bet.numbers);
+                console.log(bet.numbers, bet.stars);
 
                 const theOLNumbers = document.getElementById('olMain');
-                theOLNumbers.innerHTML = ""; 
+                theOLNumbers.innerHTML = "";  // Clear previous numbers
 
                 bet.numbers.forEach(number => {
                     const newLi = document.createElement("li");
@@ -21,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 const theOLStars = document.getElementById('olStars');
-                theOLStars.innerHTML = ""; 
+                theOLStars.innerHTML = "";  // Clear previous stars
 
                 bet.stars.forEach(star => {
                     const newLi = document.createElement("li");
@@ -29,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     theOLStars.appendChild(newLi);
                 });
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
     }
 });

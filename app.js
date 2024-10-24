@@ -1,6 +1,9 @@
 const express = require('express');
+const cors = require('cors');  // Import CORS middleware
 const path = require('path');
 const app = express();
+
+app.use(cors());  // Enable CORS for all routes
 
 app.use(express.static(path.join(__dirname, 'public'))); 
 
